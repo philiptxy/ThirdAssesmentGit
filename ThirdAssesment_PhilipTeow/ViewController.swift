@@ -22,6 +22,22 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Color", style: .plain, target: self, action: #selector(colorButtonTapped))
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        if UserDefaults.standard.string(forKey: "barColor") == nil {
+            navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        } else if UserDefaults.standard.string(forKey: "barColor") == "blue" {
+            navigationController?.navigationBar.barTintColor = UIColor.blue
+        } else if UserDefaults.standard.string(forKey: "barColor") == "red" {
+            navigationController?.navigationBar.barTintColor = UIColor.red
+        } else if UserDefaults.standard.string(forKey: "barColor") == "purple" {
+            navigationController?.navigationBar.barTintColor = UIColor.purple
+        }
+        
+
+        
         if UserDefaults.standard.bool(forKey: "isNotFirstRun") {
             print("Owners was previously loaded")
             fetchOwners()
@@ -32,6 +48,32 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "isNotFirstRun")
         }
         
+    }
+    
+    
+    @objc func colorButtonTapped(){
+        let alertController = UIAlertController(title: "Choose Theme", message: nil, preferredStyle: .alert)
+        let blue = UIAlertAction(title: "Blue", style: .default) { (action) in
+            self.navigationController?.navigationBar.barTintColor = UIColor.blue
+            UserDefaults.standard.set("blue", forKey: "barColor")
+        }
+        let red = UIAlertAction(title: "Red", style: .default) { (action) in
+            self.navigationController?.navigationBar.barTintColor = UIColor.red
+            UserDefaults.standard.set("red", forKey: "barColor")
+        }
+        let purple = UIAlertAction(title: "Purple", style: .default) { (action) in
+            self.navigationController?.navigationBar.barTintColor = UIColor.purple
+            UserDefaults.standard.set("purple", forKey: "barColor")
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+       
+        
+        alertController.addAction(blue)
+        alertController.addAction(red)
+        alertController.addAction(purple)
+        alertController.addAction(cancel)
+       
+        present(alertController, animated: true, completion: nil)
     }
     
     func loadOwners(){
@@ -67,11 +109,11 @@ class ViewController: UIViewController {
         
         
     }
-
-
     
     
-
+    
+    
+    
 }
 
 extension ViewController : UITableViewDataSource {
@@ -132,12 +174,6 @@ extension ViewController : NSFetchedResultsControllerDelegate {
                 }, completion: { (_) in
                     self.tableView.reloadRows(at: [new], with: .fade)
                 })
-                
-                
-                //                tableView.moveRow(at: old, to: new)
-                //                tableView.endUpdates()
-                //                tableView.beginUpdates()
-                //                tableView.reloadRows(at: [new], with: .fade)
                 
                 
             }

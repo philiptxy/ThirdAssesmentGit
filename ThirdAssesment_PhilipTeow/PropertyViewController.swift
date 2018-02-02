@@ -22,12 +22,17 @@ class PropertyViewController: UIViewController {
         tableView.delegate = self
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addButtonHandler))
-        navigationItem.title = ""
+        guard let ownerName = selectedOwner.name else {return}
+        navigationItem.title = "Properties of \(ownerName)"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     @objc func addButtonHandler(){
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else {return}
-        
+        vc.selectedOwner = selectedOwner
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -44,11 +49,13 @@ extension PropertyViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ownerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "propertyCell", for: indexPath)
         if let properties = selectedOwner.owns?.allObjects as? [Property]{
             let currentProperty = properties[indexPath.row]
             cell.textLabel?.text = currentProperty.name
-            cell.detailTextLabel?.text = "Price: \(currentProperty.price) Location: \(currentProperty.location)"
+            guard let propertyPrice = currentProperty.price,
+                let propertyLocation = currentProperty.location else {return UITableViewCell()}
+            cell.detailTextLabel?.text = "Price: \(propertyPrice) Location: \(propertyLocation)"
         }
         
         return cell
