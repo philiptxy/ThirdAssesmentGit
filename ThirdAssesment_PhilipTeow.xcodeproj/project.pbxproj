@@ -14,6 +14,7 @@
 		FC1048EE202409F40009672A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1048EC202409F40009672A /* LaunchScreen.storyboard */; };
 		FC1048F720240EF10009672A /* ThirdAssesment_PhilipTeow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC1048F520240EF10009672A /* ThirdAssesment_PhilipTeow.xcdatamodeld */; };
 		FC1048F9202410040009672A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1048F8202410040009672A /* DataController.swift */; };
+		FC1048FB20241AA70009672A /* PropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1048FA20241AA70009672A /* PropertyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FC1048EF202409F40009672A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC1048F620240EF10009672A /* ThirdAssesment_PhilipTeow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ThirdAssesment_PhilipTeow.xcdatamodel; sourceTree = "<group>"; };
 		FC1048F8202410040009672A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		FC1048FA20241AA70009672A /* PropertyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				FC1048E3202409F40009672A /* AppDelegate.swift */,
 				FC1048F8202410040009672A /* DataController.swift */,
 				FC1048E5202409F40009672A /* ViewController.swift */,
+				FC1048FA20241AA70009672A /* PropertyViewController.swift */,
 				FC1048E7202409F40009672A /* Main.storyboard */,
 				FC1048EA202409F40009672A /* Assets.xcassets */,
 				FC1048EC202409F40009672A /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC1048E6202409F40009672A /* ViewController.swift in Sources */,
+				FC1048FB20241AA70009672A /* PropertyViewController.swift in Sources */,
 				FC1048F9202410040009672A /* DataController.swift in Sources */,
 				FC1048E4202409F40009672A /* AppDelegate.swift in Sources */,
 				FC1048F720240EF10009672A /* ThirdAssesment_PhilipTeow.xcdatamodeld in Sources */,
